@@ -66,7 +66,7 @@ ol.steps li{counter-increment:s;display:grid;grid-template-columns:44px minmax(0
 ol.steps li::before{content:counter(s);font:700 20px/44px var(--display);width:44px;height:44px;text-align:center;border:1.5px solid var(--accent);color:var(--accent);border-radius:50%}
 ol.steps b{display:block;font-weight:600}
 ol.steps span{color:var(--muted)}
-.price{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;background:var(--surface);border:1px solid var(--line);border-radius:8px;margin-top:20px}
+.price{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;background:var(--surface);border:1px solid var(--line);border-radius:8px;margin-top:20px}
 .price>div{padding:24px}
 .price>div+div{border-left:1px solid var(--line)}
 .price .k{font:500 13px/1.4 var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
@@ -146,7 +146,8 @@ footer{padding-block:0 40px;font-size:14px;color:var(--muted)}
   <h2>Ile to kosztuje</h2>
   <div class="price">
     <div><div class="k">Pierwszy tydzień</div><div class="v">0 zł</div><p>Pełne zestawienia przez 7 dni. Jeśli nic Ci nie dadzą, po prostu nie przedłużasz.</p></div>
-    <div><div class="k">Potem</div><div class="v">79 zł <small>miesięcznie</small></div><p>Jedna branża, dowolna liczba powiatów w obsługiwanych województwach. Dla pierwszych 20 firm 49 zł miesięcznie na stałe. Rezygnacja w każdej chwili.</p></div>
+    <div><div class="k">Podstawowy</div><div class="v">79 zł <small>miesięcznie</small></div><p>Codzienny mail z zapytaniami z Twojej branży. Jedna branża, dowolna liczba powiatów w obsługiwanych województwach. Rezygnacja w każdej chwili.</p></div>
+    <div><div class="k">Z cenami (w przygotowaniu)</div><div class="v">99 zł <small>miesięcznie</small></div><p>To samo, a przy zapytaniach widełki cenowe z podobnych rozstrzygniętych postępowań: ile oferują firmy i za ile wygrywają.</p></div>
   </div>
 </section>
 
