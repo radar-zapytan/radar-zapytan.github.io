@@ -215,8 +215,8 @@ footer .links a{color:var(--muted)}
 <section id="kontakt" class="contact">
   <h2 style="font-size:clamp(36px,5vw,62px);line-height:1.05"><span class="hl">2 dni</span> próby bez karty.</h2>
   <p>Napisz, czym zajmuje się Twoja firma i z których powiatów chcesz dostawać zapytania. Przez 2 dni robocze wyślemy Ci przykładowe zestawienia, bez zobowiązań i bez podawania karty.</p>
-  <a class="cta" href="mailto:radarzapytan@proton.me?subject=2%20dni%20pr%C3%B3by%20%E2%80%93%20Radar%20Zapyta%C5%84">Zobacz, jak to działa</a>
-  <span class="note">albo napisz bezpośrednio: radarzapytan@proton.me</span>
+  <a class="cta" id="btn-proba" href="mailto:radarzapytan@proton.me?subject=2%20dni%20pr%C3%B3by%20%E2%80%93%20Radar%20Zapyta%C5%84">Zobacz, jak to działa</a>
+  <span class="note" id="proba-note" aria-live="polite">albo napisz bezpośrednio: radarzapytan@proton.me</span>
 </section>
 </main>
 
@@ -233,6 +233,11 @@ footer .links a{color:var(--muted)}
   function sync(){var on=root.classList.contains('hc');btn.setAttribute('aria-pressed',on?'true':'false');label.textContent=on?'Tryb zwykły':'Tryb kontrastowy';}
   btn.addEventListener('click',function(){root.classList.toggle('hc');try{localStorage.setItem('rz-kontrast',root.classList.contains('hc')?'1':'0')}catch(e){}sync();});
   sync();
+  var proba=document.getElementById('btn-proba'), note=document.getElementById('proba-note'), adres='radarzapytan@proton.me';
+  proba.addEventListener('click',function(){
+    var msg='Adres skopiowany: '+adres+'. Jeśli nie otworzył się program pocztowy, wklej go w swojej poczcie (temat: 2 dni próby).';
+    try{navigator.clipboard.writeText(adres).then(function(){note.textContent=msg},function(){note.textContent='Napisz na: '+adres+' (temat: 2 dni próby).'})}catch(e){note.textContent='Napisz na: '+adres+' (temat: 2 dni próby).'}
+  });
 })();
 </script>
 </body>
