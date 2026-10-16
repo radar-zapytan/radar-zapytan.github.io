@@ -8,177 +8,224 @@
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="description" content="Codzienne zestawienie zapytań ofertowych z urzędów gmin i powiatów dla biur projektowych, inspektorów nadzoru i geodetów.">
+<meta name="theme-color" content="#2A1613">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap">
+<script>
+/* Tryb kontrastowy zapamiętany w przeglądarce odwiedzającego */
+try{if(localStorage.getItem('rz-kontrast')==='1'){document.documentElement.classList.add('hc')}}catch(e){}
+</script>
 <style>
-/* Układ: jedna kolumna, szerokość czytania; fragment prawdziwego raportu jako główny dowód zamiast grafiki */
 :root{
-  --bg:#f2f5f1; --surface:#ffffff; --ink:#13201b; --muted:#56655e; --line:#d5ddd6;
-  --accent:#0b6b4f; --accent-ink:#ffffff; --signal:#9a5b00; --signal-bg:#fbefd6;
-  --display:"Archivo","Arial Narrow",Arial,sans-serif;
-  --body:"IBM Plex Sans","Segoe UI",Arial,sans-serif;
-  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
-  color-scheme:light;
-}
-@media (prefers-color-scheme:dark){:root{
-  --bg:#0e1714; --surface:#16221e; --ink:#e7efea; --muted:#9db0a7; --line:#2a3a34;
-  --accent:#3fc59a; --accent-ink:#06231a; --signal:#f0c069; --signal-bg:#3a2c0d;
+  --bg:#2A1613; --surface:#3A1E19; --surface2:#4A2620; --line:#55302A;
+  --fg:#F3ECE4; --muted:#CDBDB3; --faint:#A8968B;
+  --accent:#F07A4A; --accent-fg:#2A1613; --pill:#4A2620; --pill-fg:#F3ECE4;
+  --logo:#F07A4A; --logo-dot:#F3ECE4;
+  --w-head:700; --w-nav:500;
   color-scheme:dark;
-}}
+}
+html.hc{
+  --bg:#0B6B4F; --surface:#0A5C44; --surface2:#08503B; --line:#5FA58F;
+  --fg:#FFFFFF; --muted:#EAF5F0; --faint:#D3EBE1;
+  --accent:#C8E26A; --accent-fg:#08503B; --pill:#FFFFFF; --pill-fg:#0A5C44;
+  --logo:#FFFFFF; --logo-dot:#C8E26A;
+  --w-head:800; --w-nav:700;
+}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body)}
-.wrap{max-width:920px;margin:0 auto;padding-inline:20px}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 17px/1.6 "Onest",system-ui,"Segoe UI",Arial,sans-serif}
 a{color:var(--accent)}
-a:focus-visible,.btn:focus-visible{outline:3px solid var(--signal);outline-offset:3px}
-header.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:22px}
-.brand{display:flex;align-items:center;gap:10px;font:700 19px/1 var(--display);font-stretch:112%;letter-spacing:.01em;color:var(--ink);text-decoration:none}
-.brand svg{width:30px;height:30px;flex:none}
-.top a.small{font-size:15px;font-weight:500}
-.hero{padding-block:44px 36px}
-h1{font:800 clamp(34px,6.2vw,60px)/1.04 var(--display);font-stretch:88%;letter-spacing:-.015em;margin:0 0 18px;text-wrap:balance}
-.lead{font-size:clamp(18px,2.3vw,21px);max-width:62ch;color:var(--muted);margin:0 0 28px}
-.lead strong{color:var(--ink);font-weight:600}
-.cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px}
-.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);font:600 17px/1 var(--body);padding:15px 22px;border-radius:6px;text-decoration:none}
-.btn:hover{filter:brightness(1.08)}
-.cta span{font-size:15px;color:var(--muted)}
-.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-block:1px solid var(--line);margin-block:10px 48px}
-.facts div{padding:20px 18px 20px 0}
-.facts div+div{padding-left:18px;border-left:1px solid var(--line)}
-.facts b{display:block;font:700 30px/1.1 var(--display);font-stretch:90%;font-variant-numeric:tabular-nums}
-.facts span{font-size:14.5px;color:var(--muted)}
-h2{font:700 clamp(24px,3.4vw,32px)/1.15 var(--display);font-stretch:92%;margin:0 0 14px;text-wrap:balance}
-section{padding-block:8px 44px}
-section p{max-width:65ch;margin:0 0 14px}
-.report{background:var(--surface);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:20px}
-.report .bar{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 16px;padding:12px 16px;border-bottom:1px solid var(--line);font:500 13px/1.4 var(--mono);color:var(--muted)}
-.item{display:grid;grid-template-columns:92px minmax(0,1fr);gap:4px 16px;padding:14px 16px}
-.item+.item{border-top:1px solid var(--line)}
-.item time{font:500 13.5px/1.7 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
-.item .who{font:500 12.5px/1.4 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--signal);background:var(--signal-bg);display:inline-block;padding:2px 7px;border-radius:3px;margin-bottom:5px}
-.item a{color:var(--ink);text-decoration-color:var(--line);text-underline-offset:3px;font-weight:500;overflow-wrap:anywhere}
-.item a:hover{text-decoration-color:var(--accent)}
-.note{font-size:14.5px;color:var(--muted);margin-top:12px}
-ol.steps{list-style:none;counter-reset:s;padding:0;margin:20px 0 0;display:grid;gap:18px}
-ol.steps li{counter-increment:s;display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;align-items:start}
-ol.steps li::before{content:counter(s);font:700 20px/44px var(--display);width:44px;height:44px;text-align:center;border:1.5px solid var(--accent);color:var(--accent);border-radius:50%}
-ol.steps b{display:block;font-weight:600}
-ol.steps span{color:var(--muted)}
-.price{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;background:var(--surface);border:1px solid var(--line);border-radius:8px;margin-top:20px}
-.price>div{padding:24px}
-.price>div+div{border-left:1px solid var(--line)}
-.price .k{font:500 13px/1.4 var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
-.price .v{font:800 40px/1.1 var(--display);font-stretch:88%;margin:6px 0 8px;font-variant-numeric:tabular-nums}
-.price .v small{font:500 16px/1 var(--body);color:var(--muted)}
-.price p{font-size:15.5px;color:var(--muted);margin:0}
-.price .buy{margin:18px 0 0}
-.price .note{margin-top:12px}
-dl.faq{margin:18px 0 0;border-top:1px solid var(--line)}
-dl.faq dt{font-weight:600;padding-top:16px}
-dl.faq dd{margin:4px 0 0;padding-bottom:16px;border-bottom:1px solid var(--line);color:var(--muted);max-width:68ch}
-.contact{background:var(--ink);color:var(--bg);border-radius:10px;padding:32px 28px;margin-bottom:40px}
-.contact h2{margin-bottom:8px}
-.contact p{color:inherit;opacity:.85}
-.contact .mail{display:inline-block;margin-top:8px;font:600 clamp(18px,3vw,24px)/1.3 var(--mono);color:var(--bg);overflow-wrap:anywhere}
-footer{padding-block:0 40px;font-size:14px;color:var(--muted)}
+a:hover{opacity:.9}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:24px}
+.narrow{max-width:1100px}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:28px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--fg);font-size:24px;font-weight:var(--w-head);letter-spacing:-.01em}
+.brand svg{width:40px;height:40px;flex:none}
+nav.menu{display:flex;gap:24px;align-items:center;flex-wrap:wrap;font-size:15px;font-weight:var(--w-nav)}
+nav.menu a.lnk{color:var(--muted);text-decoration:none}
+nav.menu a.lnk:hover{color:var(--fg)}
+.btn-hc{background:transparent;color:var(--fg);border:2px solid var(--fg);font:inherit;font-weight:600;padding:8px 18px;border-radius:999px;min-height:44px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.pill{background:var(--pill);color:var(--pill-fg);text-decoration:none;padding:10px 20px;border-radius:999px;min-height:44px;display:inline-flex;align-items:center}
+.cta{background:var(--accent);color:var(--accent-fg);text-decoration:none;font-weight:600;padding:14px 30px;border-radius:999px;min-height:48px;display:inline-flex;align-items:center;justify-content:center}
+.hero{max-width:1100px;margin:0 auto;padding:72px 24px 96px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:48px}
+h1{margin:0;font-weight:var(--w-head);font-size:clamp(40px,6.2vw,80px);line-height:1.05;letter-spacing:-.025em;text-wrap:balance}
+h2{margin:0;font-weight:var(--w-head);font-size:clamp(32px,4.2vw,50px);line-height:1.1;letter-spacing:-.02em}
+h3{margin:0;font-size:20px;font-weight:600}
+.hl{color:var(--accent)}
+.lead{margin:0;max-width:680px;font-size:19px;color:var(--muted)}
+.cta-box{display:flex;flex-direction:column;align-items:center;gap:12px}
+.note{font-size:14px;color:var(--faint)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;padding-bottom:96px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px}
+.big{font-weight:600;font-size:52px;line-height:1;letter-spacing:-.02em}
+.card p{margin:12px 0 0;color:var(--muted);font-size:15px}
+section.block{padding-block:96px}
+.stack{display:flex;flex-direction:column;gap:40px}
+.muted{color:var(--muted)}
+.report{background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.report .meta{display:flex;flex-wrap:wrap;gap:8px 24px;padding:18px 24px;border-bottom:1px solid var(--line);font-size:14px;color:var(--muted)}
+.report .meta strong{color:var(--fg);font-weight:600}
+.report a.row{display:flex;flex-wrap:wrap;gap:6px 24px;align-items:baseline;padding:18px 24px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--fg)}
+.report a.row:hover{background:var(--surface2)}
+.report .d{font-size:14px;color:var(--muted);min-width:96px}
+.report .p{font-size:13px;letter-spacing:.08em;font-weight:700;color:var(--accent);min-width:170px}
+.report .t{flex:1 1 360px}
+.report .foot{padding:18px 24px;font-size:14px;color:var(--muted)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px}
+.step{display:flex;flex-direction:column;gap:10px}
+.step .n{font-size:32px;font-weight:600;color:var(--accent);line-height:1}
+.step p{margin:0;color:var(--muted)}
+.prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;align-items:stretch}
+.price{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:32px;display:flex;flex-direction:column;gap:14px}
+.price.main{background:var(--surface2);border:2px solid var(--accent)}
+.price.soon{border-style:dashed}
+.price .lab{font-size:13px;letter-spacing:.1em;font-weight:700;color:var(--faint)}
+.price.main .lab{color:var(--accent)}
+.price .amt{font-weight:600;font-size:48px;line-height:1;letter-spacing:-.02em}
+.price .amt small{font-size:16px;font-weight:400;letter-spacing:0;color:var(--muted)}
+.price p{margin:0;color:var(--muted)}
+.price .cta{margin-top:auto}
+.faq{max-width:860px;margin:0 auto;padding:96px 24px}
+.faq h2{margin-bottom:36px}
+details{border-bottom:1px solid var(--line);padding:18px 0}
+summary{cursor:pointer;list-style:none;font-size:19px;font-weight:600}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";float:right;color:var(--accent);font-weight:700}
+details[open] summary::after{content:"–"}
+details p{margin:12px 0 0;color:var(--muted)}
+.contact{max-width:900px;margin:0 auto;padding:112px 24px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:36px}
+.contact p{margin:0;max-width:600px;color:var(--muted)}
+footer.bottom{border-top:1px solid var(--line)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;padding-block:28px;font-size:14px;color:var(--faint)}
+footer .links{display:flex;gap:24px;flex-wrap:wrap}
+footer .links a{color:var(--muted)}
 @media (max-width:640px){
-  .facts{grid-template-columns:1fr}
-  .facts div,.facts div+div{padding:14px 0;border-left:0}
-  .facts div+div{border-top:1px solid var(--line)}
-  .item{grid-template-columns:1fr}
-  .price{grid-template-columns:1fr}
-  .price>div+div{border-left:0;border-top:1px solid var(--line)}
-}
+  nav.menu a.lnk{display:none}
+  .hero{padding-top:40px;gap:36px}
+  section.block{padding-block:64px}
 }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-<header class="top">
-  <a class="brand" href="#">
-    <svg viewBox="0 0 256 256" aria-hidden="true"><circle cx="128" cy="128" r="100" fill="none" stroke="currentColor" stroke-width="12"/><circle cx="128" cy="128" r="66" fill="none" stroke="currentColor" stroke-width="12"/><circle cx="128" cy="128" r="32" fill="none" stroke="currentColor" stroke-width="12"/><path d="M128 128 L128 22 A106 106 0 0 1 219.8 75.0 Z" fill="var(--accent)"/><circle cx="67.7" cy="154.8" r="15" fill="var(--accent)"/></svg>
-    Radar Zapytań
+<header class="wrap top">
+  <a class="brand" href="#" aria-label="Radar Zapytań – strona główna">
+    <svg viewBox="0 0 256 256" aria-hidden="true"><circle cx="128" cy="128" r="100" fill="none" stroke="var(--logo)" stroke-width="12"/><circle cx="128" cy="128" r="66" fill="none" stroke="var(--logo)" stroke-width="12"/><circle cx="128" cy="128" r="32" fill="none" stroke="var(--logo)" stroke-width="12"/><path d="M128 128 L128 22 A106 106 0 0 1 219.8 75.0 Z" fill="var(--logo)" opacity="0.55"/><circle cx="67.7" cy="154.8" r="15" fill="var(--logo-dot)"/></svg>
+    <span>Radar Zapytań</span>
   </a>
-  <a class="small" href="#kontakt">Kontakt</a>
+  <nav class="menu" aria-label="Menu">
+    <a class="lnk" href="#przyklad">Przykład</a>
+    <a class="lnk" href="#jak">Jak to działa</a>
+    <a class="lnk" href="#cennik">Cennik</a>
+    <button type="button" class="btn-hc" id="btn-hc" aria-pressed="false">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg>
+      <span id="hc-label">Tryb kontrastowy</span>
+    </button>
+    <a class="pill" href="#kontakt">Kontakt</a>
+  </nav>
 </header>
 
 <main>
-<div class="hero">
-  <h1>Zapytania ofertowe z urzędów gmin i powiatów, codziennie w jednym mailu</h1>
-  <p class="lead">Gminy i powiaty ogłaszają małe zlecenia na <strong>dokumentację projektową, nadzór inwestorski, przeglądy i geodezję</strong> na własnych stronach BIP, każda osobno. Sprawdzamy je za Ciebie w każdy dzień roboczy i wysyłamy tylko te, które pasują do Twojej branży.</p>
-  <div class="cta">
-    <a class="btn" href="#kontakt">Zamów darmowy tydzień</a>
-    <span>Bez umowy, rezygnacja w każdej chwili. Potem 79 zł miesięcznie.</span>
+<section class="hero">
+  <h1>Zapytania ofertowe z urzędów, <span class="hl">codziennie</span> w jednym mailu.</h1>
+  <p class="lead">Gminy i powiaty ogłaszają małe zlecenia na dokumentację projektową, nadzór inwestorski, przeglądy i geodezję na własnych stronach BIP, każda osobno. Sprawdzamy je za Ciebie w każdy dzień roboczy i wysyłamy tylko te, które pasują do Twojej branży.</p>
+  <div class="cta-box">
+    <a class="cta" href="#kontakt">Zamów darmowy tydzień</a>
+    <span class="note">Bez umowy, rezygnacja w każdej chwili. Potem 79 zł miesięcznie.</span>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="card"><div class="big hl">566</div><p>stron urzędów i jednostek sprawdzanych w każdy dzień roboczy</p></div>
+    <div class="card"><div class="big">ok. 250</div><p>nowych zleceń tygodniowo w samej Małopolsce, we wszystkich branżach</p></div>
+    <div class="card"><div class="big">ok. 25</div><p>z nich tygodniowo to projekty, nadzór i dokumentacja</p></div>
   </div>
 </div>
 
-<div class="facts">
-  <div><b>566</b><span>stron urzędów i jednostek sprawdzanych w każdy dzień roboczy</span></div>
-  <div><b>ok. 250</b><span>nowych zleceń tygodniowo w samej Małopolsce, we wszystkich branżach</span></div>
-  <div><b>ok. 25</b><span>z nich tygodniowo to projekty, nadzór i dokumentacja</span></div>
-</div>
-
-<section>
-  <h2>Tak wygląda zestawienie</h2>
-  <p>To prawdziwe ogłoszenia opublikowane przez urzędy z Małopolski, od której zaczynamy, między 29 września a 6 października 2026. Każda pozycja prowadzi do źródła.</p>
-  <div class="report">
-    <div class="bar"><span>Branża: projekty, nadzór, dokumentacja</span><span>Obszar: woj. małopolskie</span></div>
-    <div class="item"><time datetime="2026-10-06">06.10.2026</time><div><span class="who">Olkusz</span><br><a href="https://bip.malopolska.pl/umigolkusz,a,2943578,wykonanie-przegladow-okresowych-rocznych-obiektow-mostowych-w-olkuszu.html">Wykonanie przeglądów okresowych rocznych obiektów mostowych w Olkuszu</a></div></div>
-    <div class="item"><time datetime="2026-10-06">06.10.2026</time><div><span class="who">Maków Podhalański</span><br><a href="https://bip.malopolska.pl/ummakowpodhalanski,a,2942583,pelnienie-obowiazkow-inspektora-nadzoru-inwestorskiego-nad-robotami-budowlanymi-do-zadania-pn-budowa.html">Pełnienie obowiązków inspektora nadzoru inwestorskiego nad budową magazynu obrony cywilnej</a></div></div>
-    <div class="item"><time datetime="2026-10-05">05.10.2026</time><div><span class="who">Tarnów</span><br><a href="https://bip.malopolska.pl/umtarnow,a,2935955,wykonanie-dokumentacji-na-remont-elewacji-budynku-przy-ul-mickiewicza-2-w-tarnowie.html">Wykonanie dokumentacji na remont elewacji budynku przy ul. Mickiewicza 2 w Tarnowie</a></div></div>
-    <div class="item"><time datetime="2026-10-05">05.10.2026</time><div><span class="who">Olkusz</span><br><a href="https://bip.malopolska.pl/umigolkusz,a,2926338,wykonanie-dokumentacji-projektowo-kosztorysowej-dla-zadania-projekt-boiska-sportowego-w-osieku.html">Dokumentacja projektowo-kosztorysowa boiska sportowego w Osieku</a></div></div>
-    <div class="item"><time datetime="2026-09-29">29.09.2026</time><div><span class="who">Gromnik</span><br><a href="https://bip.malopolska.pl/uggromnik,a,2917947,zapytanie-ofertowe-pn-opracowanie-kompleksowej-dokumentacji-projektowej-na-budowe-chodnika-w-ciagu-d.html">Kompleksowa dokumentacja projektowa budowy chodnika w ciągu drogi powiatowej w Polichtach</a></div></div>
-  </div>
-  <p class="note">W tym samym tygodniu ukazało się więcej zapytań z tej branży. Pełne zestawienie dostają abonenci.</p>
-</section>
-
-<section>
-  <h2>Jak to działa</h2>
-  <ol class="steps">
-    <li><div><b>Podajesz branżę i powiaty</b><span>Na przykład: dokumentacja drogowa i nadzór, powiaty krakowski, olkuski i chrzanowski. Albo całe województwo.</span></div></li>
-    <li><div><b>Codziennie przeglądamy strony zamówień</b><span>Strony BIP urzędów gmin, starostw i ich jednostek oraz platformę e-Zamówienia. Wybieramy nowe ogłoszenia i odrzucamy wyniki, unieważnienia i sprostowania.</span></div></li>
-    <li><div><b>Dostajesz maila z pasującymi zleceniami</b><span>Zamawiający, przedmiot zamówienia, link do ogłoszenia i termin składania ofert, jeśli urząd podał go w treści.</span></div></li>
-  </ol>
-</section>
-
-<section>
-  <h2>Ile to kosztuje</h2>
-  <div class="price">
-    <div><div class="k">Pierwszy tydzień</div><div class="v">0 zł</div><p>Pełne zestawienia przez 7 dni. Jeśli nic Ci nie dadzą, po prostu nie przedłużasz.</p></div>
-    <div><div class="k">Podstawowy</div><div class="v">79 zł <small>miesięcznie</small></div><p>Codzienny mail z zapytaniami z Twojej branży. Jedna branża, dowolna liczba powiatów w obsługiwanych województwach. Rezygnacja w każdej chwili.</p>
-      <p class="buy"><a class="btn" href="https://buy.stripe.com/28E7sKctQ4sN3mMg6p4Rq00" rel="noopener">Zacznij 7 dni za darmo</a></p>
-      <p class="note">Formularz płatności wymaga podania karty, ale opłatę pobierzemy dopiero po 7 dniach. Zrezygnujesz przed końcem próby, nic nie zapłacisz. Wolisz bez karty? <a href="#kontakt">Napisz do nas</a>.</p></div>
-    <div><div class="k">Z cenami (w przygotowaniu)</div><div class="v">99 zł <small>miesięcznie</small></div><p>To samo, a przy zapytaniach widełki cenowe z podobnych rozstrzygniętych postępowań: ile oferują firmy i za ile wygrywają.</p></div>
+<section id="przyklad" class="block">
+  <div class="wrap narrow stack">
+    <h2>Tak wygląda zestawienie</h2>
+    <p class="muted" style="margin:0;max-width:720px">To prawdziwe ogłoszenia opublikowane przez urzędy z Małopolski, od której zaczynamy, między 29 września a 6 października 2026. Każda pozycja prowadzi do źródła.</p>
+    <div class="report">
+      <div class="meta"><span>Branża: <strong>projekty, nadzór, dokumentacja</strong></span><span>Obszar: <strong>woj. małopolskie</strong></span></div>
+      <a class="row" href="https://bip.malopolska.pl/umigolkusz,a,2943578,wykonanie-przegladow-okresowych-rocznych-obiektow-mostowych-w-olkuszu.html"><span class="d">06.10.2026</span><span class="p">OLKUSZ</span><span class="t">Wykonanie przeglądów okresowych rocznych obiektów mostowych w Olkuszu</span></a>
+      <a class="row" href="https://bip.malopolska.pl/ummakowpodhalanski,a,2942583,pelnienie-obowiazkow-inspektora-nadzoru-inwestorskiego-nad-robotami-budowlanymi-do-zadania-pn-budowa.html"><span class="d">06.10.2026</span><span class="p">MAKÓW PODHALAŃSKI</span><span class="t">Pełnienie obowiązków inspektora nadzoru inwestorskiego nad budową magazynu obrony cywilnej</span></a>
+      <a class="row" href="https://bip.malopolska.pl/umtarnow,a,2935955,wykonanie-dokumentacji-na-remont-elewacji-budynku-przy-ul-mickiewicza-2-w-tarnowie.html"><span class="d">05.10.2026</span><span class="p">TARNÓW</span><span class="t">Wykonanie dokumentacji na remont elewacji budynku przy ul. Mickiewicza 2 w Tarnowie</span></a>
+      <a class="row" href="https://bip.malopolska.pl/umigolkusz,a,2926338,wykonanie-dokumentacji-projektowo-kosztorysowej-dla-zadania-projekt-boiska-sportowego-w-osieku.html"><span class="d">05.10.2026</span><span class="p">OLKUSZ</span><span class="t">Dokumentacja projektowo-kosztorysowa boiska sportowego w Osieku</span></a>
+      <a class="row" href="https://bip.malopolska.pl/uggromnik,a,2917947,zapytanie-ofertowe-pn-opracowanie-kompleksowej-dokumentacji-projektowej-na-budowe-chodnika-w-ciagu-d.html"><span class="d">29.09.2026</span><span class="p">GROMNIK</span><span class="t">Kompleksowa dokumentacja projektowa budowy chodnika w ciągu drogi powiatowej w Polichtach</span></a>
+      <div class="foot">W tym samym tygodniu ukazało się więcej zapytań z tej branży. Pełne zestawienie dostają abonenci.</div>
+    </div>
   </div>
 </section>
 
-<section>
+<section id="jak" class="block" style="padding-top:24px">
+  <div class="wrap narrow stack">
+    <h2>Jak to działa</h2>
+    <div class="steps">
+      <div class="step"><span class="n">01</span><h3>Podajesz branżę i powiaty</h3><p>Na przykład: dokumentacja drogowa i nadzór, powiaty krakowski, olkuski i chrzanowski. Albo całe województwo.</p></div>
+      <div class="step"><span class="n">02</span><h3>Codziennie przeglądamy strony zamówień</h3><p>Strony BIP urzędów gmin, starostw i ich jednostek oraz platformę e-Zamówienia. Wybieramy nowe ogłoszenia i odrzucamy wyniki, unieważnienia i sprostowania.</p></div>
+      <div class="step"><span class="n">03</span><h3>Dostajesz maila z pasującymi zleceniami</h3><p>Zamawiający, przedmiot zamówienia, link do ogłoszenia i termin składania ofert, jeśli urząd podał go w treści.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="cennik" class="block">
+  <div class="wrap stack">
+    <h2 style="text-align:center">Ile to kosztuje</h2>
+    <div class="prices">
+      <div class="price">
+        <span class="lab">PIERWSZY TYDZIEŃ</span>
+        <span class="amt">0 zł</span>
+        <p>Pełne zestawienia przez 7 dni. Jeśli nic Ci nie dadzą, po prostu nie przedłużasz.</p>
+      </div>
+      <div class="price main">
+        <span class="lab">PODSTAWOWY</span>
+        <span class="amt">79 zł <small>miesięcznie</small></span>
+        <p>Codzienny mail z zapytaniami z Twojej branży. Jedna branża, dowolna liczba powiatów w obsługiwanych województwach. Rezygnacja w każdej chwili.</p>
+        <a class="cta" href="https://buy.stripe.com/28E7sKctQ4sN3mMg6p4Rq00">Zacznij 7 dni za darmo</a>
+        <span class="note">Formularz płatności wymaga podania karty, ale opłatę pobierzemy dopiero po 7 dniach. Zrezygnujesz przed końcem próby, nic nie zapłacisz. Wolisz bez karty? <a href="#kontakt">Napisz do nas</a>.</span>
+      </div>
+      <div class="price soon">
+        <span class="lab">Z CENAMI (W PRZYGOTOWANIU)</span>
+        <span class="amt">99 zł <small>miesięcznie</small></span>
+        <p>To samo, a przy zapytaniach widełki cenowe z podobnych rozstrzygniętych postępowań: ile oferują firmy i za ile wygrywają.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
   <h2>Częste pytania</h2>
-  <dl class="faq">
-    <dt>Czym to się różni od dużych serwisów przetargowych?</dt>
-    <dd>Oprócz ogłoszeń z Biuletynu Zamówień Publicznych sprawdzamy małe zamówienia poniżej progu ustawowego, który od 2026 roku wynosi 170 tys. zł netto. Takie zlecenia trafiają tylko na stronę urzędu i zwykle startuje w nich kilka firm. W naszym teście z 1–8 października 2026 około 40% zapytań znalezionych na stronach BIP nie było w jednym z dużych serwisów przetargowych.</dd>
-    <dt>Skąd pochodzą dane?</dt>
-    <dd>Wyłącznie z publicznych stron Biuletynu Informacji Publicznej urzędów i ich jednostek. Niczego nie zmieniamy w treści ogłoszeń, a każda pozycja ma link do oryginału.</dd>
-    <dt>Jaki obszar obejmuje usługa?</dt>
-    <dd>Zaczęliśmy od województwa małopolskiego i stopniowo dodajemy kolejne. Jeśli interesuje Cię inny region, napisz, a damy znać, kiedy go uruchomimy. W Małopolsce nie obejmujemy jeszcze urzędów miast Krakowa, Nowego Sącza i Zakopanego, które prowadzą BIP w osobnych systemach.</dd>
-    <dt>Czy dostanę każde zapytanie z mojego regionu?</dt>
-    <dd>Nie możemy tego obiecać. Część urzędów wysyła zapytania bezpośrednio do wybranych firm i nie publikuje ich na stronie. Dostajesz wszystko, co ukazało się w sprawdzanych przez nas sekcjach zamówień.</dd>
-  </dl>
+  <details><summary>Czym to się różni od dużych serwisów przetargowych?</summary><p>Oprócz ogłoszeń z Biuletynu Zamówień Publicznych sprawdzamy małe zamówienia poniżej progu ustawowego, który od 2026 roku wynosi 170 tys. zł netto. Takie zlecenia trafiają tylko na stronę urzędu i zwykle startuje w nich kilka firm. W naszym teście z 1–8 października 2026 około 40% zapytań znalezionych na stronach BIP nie było w jednym z dużych serwisów przetargowych.</p></details>
+  <details><summary>Skąd pochodzą dane?</summary><p>Wyłącznie z publicznych stron Biuletynu Informacji Publicznej urzędów i ich jednostek. Niczego nie zmieniamy w treści ogłoszeń, a każda pozycja ma link do oryginału.</p></details>
+  <details><summary>Jaki obszar obejmuje usługa?</summary><p>Zaczęliśmy od województwa małopolskiego i stopniowo dodajemy kolejne. Jeśli interesuje Cię inny region, napisz, a damy znać, kiedy go uruchomimy. W Małopolsce nie obejmujemy jeszcze urzędów miast Krakowa, Nowego Sącza i Zakopanego, które prowadzą BIP w osobnych systemach.</p></details>
+  <details><summary>Czy dostanę każde zapytanie z mojego regionu?</summary><p>Nie możemy tego obiecać. Część urzędów wysyła zapytania bezpośrednio do wybranych firm i nie publikuje ich na stronie. Dostajesz wszystko, co ukazało się w sprawdzanych przez nas sekcjach zamówień.</p></details>
 </section>
 
-<section id="kontakt">
-  <div class="contact">
-    <h2>Zamów darmowy tydzień</h2>
-    <p>Napisz, czym zajmuje się Twoja firma i z których powiatów chcesz dostawać zapytania. Pierwsze zestawienie wyślemy następnego dnia roboczego.</p>
-    <a class="mail" href="mailto:radarzapytan@proton.me">radarzapytan@proton.me</a>
-  </div>
+<section id="kontakt" class="contact">
+  <h2 style="font-size:clamp(36px,5vw,62px);line-height:1.05">Zamów <span class="hl">darmowy</span> tydzień.</h2>
+  <p>Napisz, czym zajmuje się Twoja firma i z których powiatów chcesz dostawać zapytania. Pierwsze zestawienie wyślemy następnego dnia roboczego.</p>
+  <a class="cta" href="mailto:radarzapytan@proton.me">radarzapytan@proton.me</a>
 </section>
 </main>
 
-<footer>Radar Zapytań. Zestawienia powstają na podstawie publicznie dostępnych ogłoszeń. Liczby na stronie pochodzą z analizy ogłoszeń z okresu październik 2025 – październik 2026.<br><a href="regulamin.html">Regulamin</a> · <a href="polityka-prywatnosci.html">Polityka prywatności</a></footer>
-</div>
+<footer class="bottom">
+  <div class="wrap">
+    <span>© 2026 Radar Zapytań</span>
+    <span class="links"><a href="regulamin.html">Regulamin</a><a href="polityka-prywatnosci.html">Polityka prywatności</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('btn-hc'), label=document.getElementById('hc-label');
+  function sync(){var on=root.classList.contains('hc');btn.setAttribute('aria-pressed',on?'true':'false');label.textContent=on?'Tryb zwykły':'Tryb kontrastowy';}
+  btn.addEventListener('click',function(){root.classList.toggle('hc');try{localStorage.setItem('rz-kontrast',root.classList.contains('hc')?'1':'0')}catch(e){}sync();});
+  sync();
+})();
+</script>
 </body>
 </html>

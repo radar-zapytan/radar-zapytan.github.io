@@ -1,14 +1,10 @@
-/* Wspólne style podstron prawnych: te same kolory i kroje co strona główna */
+/* Wspólne style podstron prawnych: ten sam font i kolory co strona główna, jasne tło do czytania dłuższego tekstu */
 :root{
-  --bg:#f2f5f1; --surface:#ffffff; --ink:#13201b; --muted:#56655e; --line:#d5ddd6; --accent:#0b6b4f; --signal:#9a5b00;
-  --display:"Archivo","Arial Narrow",Arial,sans-serif;
-  --body:"IBM Plex Sans","Segoe UI",Arial,sans-serif;
+  --bg:#F3ECE4; --surface:#FBF7F2; --ink:#2A1613; --muted:#6B524A; --line:#E2D5CA; --accent:#B4491F; --signal:#F07A4A;
+  --display:"Onest",system-ui,"Segoe UI",Arial,sans-serif;
+  --body:"Onest",system-ui,"Segoe UI",Arial,sans-serif;
   color-scheme:light;
 }
-@media (prefers-color-scheme:dark){:root{
-  --bg:#0e1714; --surface:#16221e; --ink:#e7efea; --muted:#9db0a7; --line:#2a3a34; --accent:#3fc59a; --signal:#f0c069;
-  color-scheme:dark;
-}}
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--body)}
@@ -16,10 +12,11 @@ body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--bod
 a{color:var(--accent)}
 a:focus-visible{outline:3px solid var(--signal);outline-offset:3px}
 header.top{padding-block:22px}
-.brand{display:inline-flex;align-items:center;gap:10px;font:700 19px/1 var(--display);font-stretch:112%;color:var(--ink);text-decoration:none}
-.brand svg{width:30px;height:30px;flex:none}
-h1{font:800 clamp(30px,5vw,44px)/1.1 var(--display);font-stretch:90%;letter-spacing:-.01em;margin:18px 0 8px;text-wrap:balance}
-h2{font:700 clamp(20px,2.8vw,24px)/1.2 var(--display);font-stretch:94%;margin:34px 0 8px}
+.brand{display:inline-flex;align-items:center;gap:10px;font:700 20px/1 var(--display);letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+.brand svg{width:30px;height:30px;flex:none;color:#F07A4A}
+.brand svg [fill]:not([fill="none"]){fill:#F07A4A}
+h1{font:800 clamp(30px,5vw,44px)/1.1 var(--display);letter-spacing:-.02em;margin:18px 0 8px;text-wrap:balance}
+h2{font:700 clamp(20px,2.8vw,24px)/1.2 var(--display);letter-spacing:-.01em;margin:34px 0 8px}
 p,li{max-width:68ch}
 p{margin:0 0 12px}
 ol,ul{padding-left:22px;margin:0 0 12px}
