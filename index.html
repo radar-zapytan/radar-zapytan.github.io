@@ -55,7 +55,11 @@ h2{margin:0;font-weight:var(--w-head);font-size:clamp(32px,4.2vw,50px);line-heig
 h3{margin:0;font-size:20px;font-weight:600}
 .hl{color:var(--accent)}
 .lead{margin:0;max-width:680px;font-size:19px;color:var(--muted)}
-.cta-box{display:flex;flex-direction:column;align-items:center;gap:12px}
+.cta-box{display:flex;flex-direction:column;align-items:center;gap:14px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.cta.ghost{background:transparent;color:var(--fg);border:2px solid var(--line)}
+.cta.ghost:hover{border-color:var(--fg)}
+.cta-box .note{max-width:560px}
 .note{font-size:14px;color:var(--faint)}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;padding-bottom:96px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px}
@@ -132,8 +136,11 @@ footer .links a{color:var(--muted)}
   <h1>Zapytania ofertowe z urzędów, <span class="hl">codziennie</span> w jednym mailu.</h1>
   <p class="lead">Gminy i powiaty ogłaszają małe zlecenia na dokumentację projektową, nadzór inwestorski, przeglądy i geodezję na własnych stronach BIP, każda osobno. Sprawdzamy je za Ciebie w każdy dzień roboczy i wysyłamy tylko te, które pasują do Twojej branży.</p>
   <div class="cta-box">
-    <a class="cta" href="#kontakt">Zamów darmowy tydzień</a>
-    <span class="note">Bez umowy, rezygnacja w każdej chwili. Potem 79 zł miesięcznie.</span>
+    <div class="cta-row">
+      <a class="cta" href="https://buy.stripe.com/28E7sKctQ4sN3mMg6p4Rq00">Zacznij 7 dni za darmo</a>
+      <a class="cta ghost" href="#kontakt">Zobacz, jak to działa</a>
+    </div>
+    <span class="note">7 dni za darmo w planie Podstawowym: karta wymagana, opłata 79 zł miesięcznie dopiero po 7 dniach, rezygnacja w każdej chwili. Bez karty: 2 dni próby mailem.</span>
   </div>
 </section>
 
@@ -179,14 +186,14 @@ footer .links a{color:var(--muted)}
       <div class="price">
         <span class="lab">PIERWSZY TYDZIEŃ</span>
         <span class="amt">0 zł</span>
-        <p>Pełne zestawienia przez 7 dni. Jeśli nic Ci nie dadzą, po prostu nie przedłużasz.</p>
+        <p>Pełne zestawienia przez 7 dni po zamówieniu planu Podstawowego. Zrezygnujesz przed końcem, nic nie płacisz.</p>
       </div>
       <div class="price main">
         <span class="lab">PODSTAWOWY</span>
         <span class="amt">79 zł <small>miesięcznie</small></span>
         <p>Codzienny mail z zapytaniami z Twojej branży. Jedna branża, dowolna liczba powiatów w obsługiwanych województwach. Rezygnacja w każdej chwili.</p>
         <a class="cta" href="https://buy.stripe.com/28E7sKctQ4sN3mMg6p4Rq00">Zacznij 7 dni za darmo</a>
-        <span class="note">Formularz płatności wymaga podania karty, ale opłatę pobierzemy dopiero po 7 dniach. Zrezygnujesz przed końcem próby, nic nie zapłacisz. Wolisz bez karty? <a href="#kontakt">Napisz do nas</a>.</span>
+        <span class="note">Formularz płatności wymaga podania karty, ale opłatę pobierzemy dopiero po 7 dniach. Zrezygnujesz przed końcem próby, nic nie zapłacisz. Wolisz najpierw bez karty? <a href="#kontakt">Napisz, a przez 2 dni wyślemy Ci przykładowe zestawienia</a>.</span>
       </div>
       <div class="price soon">
         <span class="lab">Z CENAMI (W PRZYGOTOWANIU)</span>
@@ -206,9 +213,10 @@ footer .links a{color:var(--muted)}
 </section>
 
 <section id="kontakt" class="contact">
-  <h2 style="font-size:clamp(36px,5vw,62px);line-height:1.05">Zamów <span class="hl">darmowy</span> tydzień.</h2>
-  <p>Napisz, czym zajmuje się Twoja firma i z których powiatów chcesz dostawać zapytania. Pierwsze zestawienie wyślemy następnego dnia roboczego.</p>
-  <a class="cta" href="mailto:radarzapytan@proton.me">radarzapytan@proton.me</a>
+  <h2 style="font-size:clamp(36px,5vw,62px);line-height:1.05"><span class="hl">2 dni</span> próby bez karty.</h2>
+  <p>Napisz, czym zajmuje się Twoja firma i z których powiatów chcesz dostawać zapytania. Przez 2 dni robocze wyślemy Ci przykładowe zestawienia, bez zobowiązań i bez podawania karty.</p>
+  <a class="cta" href="mailto:radarzapytan@proton.me?subject=2%20dni%20pr%C3%B3by%20%E2%80%93%20Radar%20Zapyta%C5%84">Zobacz, jak to działa</a>
+  <span class="note">albo napisz bezpośrednio: radarzapytan@proton.me</span>
 </section>
 </main>
 
