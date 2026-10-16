@@ -104,9 +104,9 @@ details p{margin:12px 0 0;color:var(--muted)}
 .form{width:100%;max-width:640px;display:flex;flex-direction:column;gap:18px;text-align:left}
 .form label{display:flex;flex-direction:column;gap:8px;font-weight:600;font-size:15px;color:var(--fg)}
 .form .opt{font-weight:400;color:var(--faint)}
-.form input,.form select{font:inherit;font-weight:400;color:var(--fg);background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:12px 14px;min-height:48px;width:100%;box-sizing:border-box}
+.form input{font:inherit;font-weight:400;color:var(--fg);background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:12px 14px;min-height:48px;width:100%;box-sizing:border-box}
 .form input::placeholder{color:var(--faint)}
-.form input:focus,.form select:focus{outline:none;border-color:var(--accent)}
+.form input:focus{outline:none;border-color:var(--accent)}
 .form .row2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .form button.cta{border:0;font:inherit;font-weight:600;cursor:pointer;align-self:center;margin-top:6px}
 .form button.cta[disabled]{opacity:.6;cursor:wait}
@@ -236,15 +236,16 @@ footer .links a{color:var(--muted)}
     <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
     <div class="row2">
       <label>Nazwa firmy<input name="firma" required autocomplete="organization"></label>
-      <label>Czym się zajmujesz
-        <select name="branza" required>
-          <option value="">Wybierz</option>
-          <option>Biuro projektowe / architekt</option>
-          <option>Inspektor nadzoru</option>
-          <option>Geodeta</option>
-          <option>Inna branża</option>
-        </select>
-      </label>
+      <label>Czym się zajmujesz<input name="branza" list="branze" required autocomplete="off" placeholder="np. projekty drogowe, inspektor nadzoru"></label>
+      <datalist id="branze">
+        <option value="Biuro projektowe / architekt">
+        <option value="Projekty drogowe">
+        <option value="Projekty instalacyjne i sanitarne">
+        <option value="Projekty elektryczne">
+        <option value="Inspektor nadzoru">
+        <option value="Geodeta">
+        <option value="Kosztorysant">
+      </datalist>
     </div>
     <label>Z których powiatów chcesz dostawać zapytania<input name="powiaty" required placeholder="np. olkuski, krakowski, chrzanowski"></label>
     <div class="row2">
